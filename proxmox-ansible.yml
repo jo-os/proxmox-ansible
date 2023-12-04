@@ -10,6 +10,7 @@
     name: vm-name
     vmid: 2005
     ipaddress: 192.168.1.2/24
+    gwaddress: '192.168.1.1'
     cores: 2
     memory: 4096
     sockets: 1
@@ -28,7 +29,7 @@
         timeout: 300
 
     - name: Set IP addresses
-      command: "qm set {{ vmid }}  --ipconfig0 ip={{ ipaddress }}"
+      command: "qm set {{ vmid }}  --ipconfig0 ip={{ ipaddress }},gw={{ gwaddress }}"
 
     - name: Update VMs
       proxmox_kvm:
